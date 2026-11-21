@@ -40,6 +40,22 @@
                         <td style="text-align: center" class="py-2 text-white">{{ $e->descripcion }}</td>
                         <td style="text-align: center" class="py-2 text-white">{{ $e->precio }}</td>
                         <td style="text-align: center" class="py-2 text-white">{{ $e->stock }}</td>
+                        <td style="text-align: center" class="py-2">
+                            <div class="flex justify-center gap-2">
+                                <a href="{{ route('producto.edit', $e->id) }}"
+                                   class="px-3 py-1 rounded bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-medium">
+                                    Editar
+                                </a>
+
+                                <form action="{{ route('producto.destroy', $e->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este producto?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                            class="px-3 py-1 rounded bg-red-600 hover:bg-red-700 text-white text-sm font-medium">
+                                        Eliminar
+                                    </button>
+                                </form>
+                            </div>
                     </tr>
                 @endforeach
             </tbody>

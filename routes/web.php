@@ -22,6 +22,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/producto', [productoController::class, 'index'])->name('producto.index');
     Route::get('/producto/create', [productoController::class, 'create'])->name('producto.create');
     Route::post('/producto', [productoController::class, 'store'])->name('producto.store');
+    Route::get('/producto/{id}/edit', [productoController::class, 'edit'])->name('producto.edit');
+    Route::put('/producto/{id}', [productoController::class, 'update'])->name('producto.update');
+    Route::delete('/producto/{id}', [productoController::class, 'destroy'])->name('producto.destroy');
 });
 
 require __DIR__.'/auth.php';
